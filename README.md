@@ -8,4 +8,4 @@
 
 ## Reference
 
-- [Diseños Alterantivs: ...]()
+- [Diseños Alternativos](https://github.com/csiglab/Bremontix/releases/tag/v1.0-alternatives-design)
