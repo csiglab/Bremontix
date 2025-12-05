@@ -88,8 +88,8 @@
 
         header {
             text-align: center;
-            margin-bottom: 3.5rem;
-            padding-top: 2rem;
+            margin-bottom: 4rem;
+            padding-top: 2.5rem;
             position: relative;
         }
 
@@ -99,6 +99,8 @@
             flex-direction: column;
             align-items: center;
             position: relative;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         /* Coat of Arms Styles */
@@ -106,21 +108,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             position: relative;
         }
 
         .coat-image {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             object-fit: contain;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
             transition: transform 0.3s ease, filter 0.3s ease;
-            margin-bottom: 0.5rem;
-            border-radius: 50%;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 0.75rem;
         }
 
         .coat-image:hover {
@@ -149,52 +147,61 @@
 
         h1 {
             color: var(--text-white);
-            font-size: 3.5rem;
+            font-size: 3.75rem;
             font-weight: 800;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             letter-spacing: -1px;
             text-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             position: relative;
             display: inline-block;
         }
 
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--accent);
-            opacity: 0.8;
-        }
-
         .subtitle {
             color: var(--text-medium);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 400;
             max-width: 700px;
-            margin: 0 auto 1.5rem;
+            margin: 1.5rem auto 2rem;
             line-height: 1.7;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            opacity: 0.8;
+            border-radius: 2px;
         }
 
         /* Header Navigation */
         .header-nav {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
+            gap: 2.5rem;
+            margin-top: 1rem;
         }
 
         .nav-link {
             color: var(--text-medium);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
             position: relative;
             transition: var(--transition);
-            padding: 0.5rem 0;
+            padding: 0.6rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link i {
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
 
         .nav-link::after {
@@ -210,6 +217,11 @@
 
         .nav-link:hover {
             color: var(--text-white);
+            transform: translateY(-2px);
+        }
+
+        .nav-link:hover i {
+            transform: translateX(3px);
         }
 
         .nav-link:hover::after {
@@ -671,12 +683,18 @@
                 <div class="coat-of-arms">
                     <img src="/img/bremontix.png" alt="Bremontix Empreseria Coat of Arms" class="coat-image">
                 </div>
-                <h1>Bremontix Empreseria</h1>
+                <h1 class="title">Bremontix Empreseria</h1>
                 <p class="subtitle">Conocimiento en acción al servicio del bien común.</p>
                 <nav class="header-nav">
-                    <a href="/docs" class="nav-link" aria-label="Documentation">Docs</a>
-                    <a href="/about" class="nav-link" aria-label="About Bremontix Empreseria">About</a>
-                    <a href="/contact" class="nav-link" aria-label="Contact Us">Contact</a>
+                    <a href="/docs" class="nav-link" aria-label="Documentation">
+                        <i class="fas fa-book"></i> Docs
+                    </a>
+                    <a href="/about" class="nav-link" aria-label="About Bremontix Empreseria">
+                        <i class="fas fa-info-circle"></i> About
+                    </a>
+                    <a href="/contact" class="nav-link" aria-label="Contact Us">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
                 </nav>
             </div>
         </header>
@@ -877,4 +895,5 @@
         }
     </script>
 </body>
+
 </html>
