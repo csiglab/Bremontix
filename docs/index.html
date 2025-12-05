@@ -90,6 +90,15 @@
             text-align: center;
             margin-bottom: 3.5rem;
             padding-top: 2rem;
+            position: relative;
+        }
+
+        /* Improved Header Styles */
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
         }
 
         /* Coat of Arms Styles */
@@ -98,6 +107,7 @@
             flex-direction: column;
             align-items: center;
             margin-bottom: 1.5rem;
+            position: relative;
         }
 
         .coat-image {
@@ -107,6 +117,10 @@
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
             transition: transform 0.3s ease, filter 0.3s ease;
             margin-bottom: 0.5rem;
+            border-radius: 50%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .coat-image:hover {
@@ -115,6 +129,8 @@
         }
 
         body.theme-corporate .coat-image {
+            background: rgba(33, 37, 41, 0.05);
+            border: 1px solid rgba(33, 37, 41, 0.1);
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
         }
 
@@ -159,8 +175,45 @@
             font-size: 1.2rem;
             font-weight: 400;
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto 1.5rem;
             line-height: 1.7;
+        }
+
+        /* Header Navigation */
+        .header-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-white);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         /* Theme Switcher */
@@ -250,7 +303,7 @@
             transition: var(--transition);
         }
 
-        .search-box:focus+.search-icon {
+        .search-box:focus + .search-icon {
             color: var(--accent);
         }
 
@@ -576,6 +629,10 @@
                 width: 100px;
                 height: 100px;
             }
+
+            .header-nav {
+                gap: 1.5rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -596,23 +653,33 @@
                 width: 80px;
                 height: 80px;
             }
+
+            .header-nav {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        
-        
-        <header>
-            <div class="coat-of-arms">
-                <img src="/img/bremontix.png" alt="Bremontix Empreseria Coat of Arms" class="coat-image">
-                <!-- <p class="coat-caption">Symbol of Courage & Authority</p> -->
-            </div>
-            <h1>Bremontix Empreseria</h1>
-            <p class="subtitle">Conocimiento en acción al servicio del bien común.</p>
-        </header>
 
+        <header>
+            <div class="header-container">
+                <div class="coat-of-arms">
+                    <img src="/img/bremontix.png" alt="Bremontix Empreseria Coat of Arms" class="coat-image">
+                </div>
+                <h1>Bremontix Empreseria</h1>
+                <p class="subtitle">Conocimiento en acción al servicio del bien común.</p>
+                <nav class="header-nav">
+                    <a href="/docs" class="nav-link" aria-label="Documentation">Docs</a>
+                    <a href="/about" class="nav-link" aria-label="About Bremontix Empreseria">About</a>
+                    <a href="/contact" class="nav-link" aria-label="Contact Us">Contact</a>
+                </nav>
+            </div>
+        </header>
 
         <!-- Theme Switcher -->
         <div class="theme-switcher">
