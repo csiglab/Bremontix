@@ -1,15 +1,11 @@
-# Bremontix Empreseria
+# Bremontix Empreseria: A Vision for a Business Group
 
-![Intro](img/intro.png)
+> Generando conocimiento al servicio del bien común.
 
-> **Bremontix Empreseria**: Generamos empresas, enriquecemos la patria.
+## Build & Install
 
-> **Bremontix Empresería**: Corporizar la patria en formas productivas.
+- ./build.sh
 
-<!-- > **Génesis**: Bremontix — Derivado de Bremont (por Dolores Bremont, madre), con el sufijo latino -ix para denotar lo femenino; simboliza a la madre como fuerza gestora y originaria de empresas.
+## Reference
 
-![Bremontix](img/resized/bremontix_256x256.png) -->
-
-## References
-
-- [Bremontix Empreseria](https://github.com/csiglab/research-2025-1-GrupoBE)
+- [Diseños Alterantivs: ...]()

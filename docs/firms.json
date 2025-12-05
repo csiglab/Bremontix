@@ -1,0 +1,107 @@
+{
+  "firms": [
+    {
+      "id": 1,
+      "name": "Bremontix Laboratorio",
+      "category": "Laboratory",
+      "icon": "fa-flask",
+      "description": "Focuses on research and development, conducting experiments and innovation in science and technology.",
+      "location": "Santo Domingo",
+      "employees": "2,500+",
+      "revenue": "$850M",
+      "link": "#"
+    },
+    {
+      "id": 2,
+      "name": "Bremontix Incubadora",
+      "category": "Finance",
+      "icon": "fa-dollar-sign",
+      "description": "Supports startups and new ventures by providing resources, mentorship, and funding opportunities.",
+      "location": "Santo Domingo",
+      "employees": "850",
+      "revenue": "$2.1B",
+      "link": "#"
+    },
+    {
+      "id": 3,
+      "name": "Bremontix Coordinación",
+      "category": "Organizational Management",
+      "icon": "fa-network-wired",
+      "description": "Coordinación oversees project coordination, ensuring alignment and collaboration across different teams and departments.",
+      "location": "Santo Domingo",
+      "employees": "2,100",
+      "revenue": "$1.8B",
+      "link": "#"
+    },
+    {
+      "id": 4,
+      "name": "Bremontix Internacional",
+      "category": "Global Operations",
+      "icon": "fa-globe",
+      "description": "Manages global operations, expanding the group’s presence and partnerships in international markets.",
+      "location": "Santiago",
+      "employees": "3,500",
+      "revenue": "$3.2B",
+      "link": "#"
+    },
+    {
+      "id": 5,
+      "name": "Bremontix Consultoria",
+      "category": "Consulting",
+      "icon": "fa-briefcase",
+      "description": "Provides strategic consulting and management solutions to help organizations improve efficiency and innovation.",
+      "location": "Santiago",
+      "employees": "5,200",
+      "revenue": "$4.5B",
+      "link": "#"
+    },
+    {
+      "id": 6,
+      "name": "Bremontix Auditoria",
+      "category": "Audit & Compliance",
+      "icon": "fa-file-invoice-dollar",
+      "description": "Specializes in auditing services, ensuring compliance, risk management, and financial transparency for businesses.",
+      "location": "Santiago",
+      "employees": "750",
+      "revenue": "$680M",
+      "link": "#"
+    },
+    {
+      "id": 7,
+      "name": "Bremontix Laburandi",
+      "category": "Human Resources & Workforce",
+      "icon": "fa-users-cog",
+      "description": "Dedicated to workforce solutions, including recruitment, talent development, and labor management.",
+      "location": "Santiago",
+      "employees": "1,100",
+      "revenue": "$950M",
+      "link": "#"
+    },
+
+    {
+      "id": 7,
+      "name": "Laboratorium Arbitristae",
+      "category": "Laboratory",
+      "icon": "fa-flask",
+      "description": "Espacio para prototipar ideas, investigando y diseñando estrategias para la grandeza tecnológica y productiva de la República Dominicana. Escudo de Armas - Laboratorio Arbitrista",
+      "location": "Santiago",
+      "employees": "1,100",
+      "revenue": "$950M",
+      "link": "https://www.bremontix.xyz/lab/ar"
+    },
+
+        {
+      "id": 7,
+      "parent": 6,
+      "name": "Laboratorium Productivum et Mercatorum",
+      "category": "Laboratory",
+      "icon": "fa-flask",
+      "description": "Characterize productive systems, design convergence plans with the most sophisticated productive systems, and experiment with new forms of production and business at the frontier.",
+      "location": "Santiago",
+      "employees": "1,100",
+      "revenue": "$950M",
+      "link": "https://www.bremontix.xyz/lab/pro/"
+    }
+
+  ]
+}

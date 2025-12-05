@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Group Firms - Bremontix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --clr-blue: #1890ff;
+            --clr-green: #01c3a8;
+            --clr-orange: #ffb741;
+            --clr-red: #a63d2a;
+            --clr-purple: #722ed1;
+            --clr-teal: #13c2c2;
+            --clr-yellow: #fadb14; /* New Color */
+            --bg-dark: #151419;
+            --bg-card: #232228;
+            --text-light: #aaa;
+            --text-white: #fff;
+            --border-radius: 2.25rem;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg-dark);
+            font-family: "Nunito", sans-serif;
+            position: relative;
+            overflow-x: hidden;
+            color: var(--text-light); /* Set default text color */
+        }
+
+        /* ------------------------------------- */
+        /* ✨ Background Spheres (Aesthetic Polish) */
+        /* ------------------------------------- */
+        .background-sphere {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            opacity: 0.15;
+            filter: blur(80px);
+            z-index: 1;
+            animation: moveSphere 25s infinite alternate ease-in-out;
+        }
+
+        .sphere-1 {
+            top: 5%;
+            left: 5%;
+            background: var(--clr-blue);
+            animation-delay: 0s;
+        }
+
+        .sphere-2 {
+            bottom: 10%;
+            right: 15%;
+            background: var(--clr-green);
+            animation-delay: -8s;
+            width: 400px;
+            height: 400px;
+        }
+
+        @keyframes moveSphere {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(150px, -50px) scale(1.1); }
+            100% { transform: translate(-50px, 100px) scale(0.9); }
+        }
+        /* ------------------------------------- */
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 2rem; /* Give some space from the top */
+        }
+
+        h1 {
+            color: var(--text-white);
+            font-size: 3.5rem; /* Slightly larger */
+            font-weight: 800; /* Bolder */
+            margin-bottom: 0.5rem;
+            letter-spacing: -2px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .search-container {
+            max-width: 700px; /* Slightly wider */
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem 4rem 1rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            border-radius: 50px;
+            color: var(--text-white);
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .search-box:focus {
+            outline: 2px solid var(--clr-blue); /* Better focus indicator */
+            box-shadow: 0 0 0 4px rgba(24, 144, 255, 0.3), 0 6px 20px rgba(0, 0, 0, 0.5);
+            background: #2a2931; /* Subtle color change on focus */
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--clr-blue); /* Brighter icon */
+            font-size: 1.3rem;
+        }
+
+        .filter-chips {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem; /* Tighter gap */
+            margin-bottom: 4rem; /* More space before cards */
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            padding: 0.6rem 1.6rem;
+            background: #2b2a30; /* Darker, more distinct background */
+            border-radius: 50px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 2px solid transparent;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            user-select: none;
+        }
+
+        .chip:hover {
+            transform: translateY(-3px); /* More pronounced hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            background: #36353b;
+        }
+
+        .chip.active {
+            background: var(--clr-blue);
+            color: var(--text-white);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(24, 144, 255, 0.4);
+            transform: translateY(0); /* No lift when active */
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 3rem; /* Slightly larger gap */
+            margin-bottom: 5rem;
+            justify-content: center; /* Center the grid items if there aren't enough to fill a row */
+        }
+
+        /* Target all cards for better centering on small screens */
+        .cards-grid > * {
+            justify-self: center;
+        }
+
+        .firm-card {
+            max-width: 100%; /* Use 100% of grid cell */
+            min-height: 22rem; /* Taller card */
+            width: 100%; /* Override the 90% */
+            display: flex; /* Use flex for internal layout */
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.85); /* Deeper shadow */
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            animation: fadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) backwards; /* Smoother, slower animation */
+            padding-bottom: 4rem; /* Space for the footer */
+        }
+
+        .firm-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9);
+        }
+
+        .firm-card::before {
+            /* Your original border gradient is fantastic, let's keep it! */
+            position: absolute;
+            content: "";
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: var(--border-radius);
+            z-index: -1;
+            border: 0.155rem solid transparent;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .firm-card:hover::before {
+            opacity: 1;
+            transform: scale(1.01); /* Subtle grow on border for hover */
+        }
+
+        .card-header {
+            position: relative; /* Keep it in the flow, adjust padding */
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 1.5rem 0.5rem 1.5rem; /* More top padding */
+        }
+
+        .firm-category {
+            color: var(--text-light);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(0, 0, 0, 0.3); /* Subtle background for readability */
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+        }
+
+        .card-icon {
+            width: 3rem; /* Slightly larger icon */
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--text-white);
+            font-size: 1.4rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-body {
+            position: static; /* Let it flow normally */
+            transform: none;
+            padding: 1rem 1.5rem 0;
+            flex-grow: 1; /* Pushes content up */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .firm-name {
+            color: var(--text-white);
+            font-size: 1.75rem; /* Larger name */
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .firm-description {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+            max-width: 100%;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .card-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            /* Remove the border-top and use an inner shadow instead for a cleaner look */
+            display: flex;
+            justify-content: space-around;
+            padding: 1rem 0;
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom-left-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Subtle internal separation line */
+        }
+
+        .footer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .footer-icon {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .footer-value {
+            color: var(--text-white);
+            font-size: 1rem;
+            font-weight: 700;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .link-icon {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.2rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            color: var(--text-white);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 5;
+        }
+
+        .firm-card:hover .link-icon {
+            opacity: 1;
+            transform: scale(1);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .link-icon:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .link-icon i {
+            font-size: 1.2rem;
+        }
+        
+        .link-icon:focus-visible { /* A11y: Visible focus rings */
+            outline: 2px solid var(--clr-orange); 
+            outline-offset: 2px;
+        }
+
+        /* Card color variations (minor adjustments for consistency) */
+        .blue {
+            background: radial-gradient(circle at 80% 15%, var(--clr-blue) 0%, var(--bg-dark) 60%, var(--bg-dark) 100%);
+        }
+        .blue::before { background: linear-gradient(45deg, var(--bg-dark) 0%, var(--bg-dark) 90%, var(--clr-blue) 100%) border-box; }
+        .blue .card-icon { background: rgba(24, 144, 255, 0.3); }
+        .blue .link-icon:hover { background: rgba(24, 144, 255, 0.3); }
+
+        .green {
+            background: radial-gradient(circle at 80% 15%, var(--clr-green) 0%, var(--bg-dark) 60%, var(--bg-dark) 100%);
+        }
+        .green::before { background: linear-gradient(45deg, var(--bg-dark) 0%, var(--bg-dark) 90%, var(--clr-green) 100%) border-box; }
+        .green .card-icon { background: rgba(1, 195, 168, 0.3); }
+        .green .link-icon:hover { background: rgba(1, 195, 168, 0.3); }
+
+        .orange {
+            background: radial-gradient(circle at 80% 15%, var(--clr-orange) 0%, var(--bg-dark) 60%, var(--bg-dark) 100%);
+        }
+        .orange::before { background: linear-gradient(45deg, var(--bg-dark) 0%, var(--bg-dark) 90%, var(--clr-orange) 100%) border-box; }
+        .orange .card-icon { background: rgba(255, 183, 65, 0.3); }
+        .orange .link-icon:hover { background: rgba(255, 183, 65, 0.3); }
+
+        .red {
+            background: radial-gradient(circle at 80% 15%, var(--clr-red) 0%, var(--bg-dark) 60%, var(--bg-dark) 100%);
+        }
+        .red::before { background: linear-gradient(45deg, var(--bg-dark) 0%, var(--bg-dark) 90%, var(--clr-red) 100%) border-box; }
+        .red .card-icon { background: rgba(166, 61, 42, 0.3); }
+        .red .link-icon:hover { background: rgba(166, 61, 42, 0.3); }
+
+        .purple {
+            background: radial-gradient(circle at 80% 15%, var(--clr-purple) 0%, var(--bg-dark) 60%, var(--bg-dark) 100%);
+        }
+        .purple::before { background: linear-gradient(45deg, var(--bg-dark) 0%, var(--bg-dark) 90%, var(--clr-purple) 100%) border-box; }
+        .purple .card-icon { background: rgba(114, 46, 209, 0.3); }
+        .purple .link-icon:hover { background: rgba(114, 46, 209, 0.3); }
+
+        .teal {
+            background: radial-gradient(circle at 80% 15%, var(--clr-teal) 0%, var(--bg-dark) 60%, var(--bg-dark) 100%);
+        }
+        .teal::before { background: linear-gradient(45deg, var(--bg-dark) 0%, var(--bg-dark) 90%, var(--clr-teal) 100%) border-box; }
+        .teal .card-icon { background: rgba(19, 194, 194, 0.3); }
+        .teal .link-icon:hover { background: rgba(19, 194, 194, 0.3); }
+
+        .yellow { /* New Color */
+            background: radial-gradient(circle at 80% 15%, var(--clr-yellow) 0%, var(--bg-dark) 60%, var(--bg-dark) 100%);
+        }
+        .yellow::before { background: linear-gradient(45deg, var(--bg-dark) 0%, var(--bg-dark) 90%, var(--clr-yellow) 100%) border-box; }
+        .yellow .card-icon { background: rgba(250, 219, 20, 0.3); }
+        .yellow .link-icon:hover { background: rgba(250, 219, 20, 0.3); }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+            
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1rem; }
+            .search-box { padding: 1rem 3rem 1rem 1.5rem; font-size: 1rem; }
+        }
+
+        @media (max-width: 576px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 1rem;
+            }
+            .firm-card {
+                min-height: 20rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-sphere sphere-1"></div>
+    <div class="background-sphere sphere-2"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Grupo Bremontix</h1>
+            <p class="subtitle">Discover our diverse portfolio of specialized companies driving innovation across multiple industries worldwide. **Innovate. Grow. Lead.**</p>
+        </header>
+
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Search firms by name, industry, or location..." aria-label="Search business firms">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <div class="filter-chips" role="tablist">
+            <div class="chip active" role="tab" aria-selected="true" data-category="">All Firms</div>
+            <div class="chip" role="tab" aria-selected="false" data-category="Technology & Innovation">Technology</div>
+            <div class="chip" role="tab" aria-selected="false" data-category="Finance">Finance</div>
+            <div class="chip" role="tab" aria-selected="false" data-category="Healthcare">Healthcare</div>
+            <div class="chip" role="tab" aria-selected="false" data-category="Manufacturing">Manufacturing</div>
+            <div class="chip" role="tab" aria-selected="false" data-category="Retail">Retail</div>
+            <div class="chip" role="tab" aria-selected="false" data-category="Sustainability">Sustainability</div>
+        </div>
+
+        <div class="cards-grid">
+            <div class="firm-card blue" data-category="Technology & Innovation">
+                <div class="card-header">
+                    <div class="firm-category">Technology & Innovation</div>
+                    <div class="card-icon" aria-label="Technology icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="firm-name">Quantum Technologies</h3>
+                    <p class="firm-description">Leading provider of quantum computing solutions for complex business challenges and scientific research.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-item">
+                        <i class="fas fa-globe footer-icon"></i>
+                        <div class="footer-value">San Francisco</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-users footer-icon"></i>
+                        <div class="footer-value">2,500+</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-chart-line footer-icon"></i>
+                        <div class="footer-value">$850M</div>
+                    </div>
+                </div>
+                <div class="link-icon" role="button" aria-label="View Quantum Technologies profile">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+            </div>
+
+            <div class="firm-card green" data-category="Finance">
+                <div class="card-header">
+                    <div class="firm-category">Finance</div>
+                    <div class="card-icon" aria-label="Finance icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="firm-name">Global Finance Partners</h3>
+                    <p class="firm-description">Trusted global asset management firm providing strategic financial planning and secure investment services.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-item">
+                        <i class="fas fa-globe footer-icon"></i>
+                        <div class="footer-value">New York</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-users footer-icon"></i>
+                        <div class="footer-value">850</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-chart-line footer-icon"></i>
+                        <div class="footer-value">$2.1B</div>
+                    </div>
+                </div>
+                <div class="link-icon" role="button" aria-label="View Global Finance Partners profile">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+            </div>
+
+            <div class="firm-card orange" data-category="Healthcare">
+                <div class="card-header">
+                    <div class="firm-category">Healthcare</div>
+                    <div class="card-icon" aria-label="Healthcare icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="firm-name">MediCare Innovations</h3>
+                    <p class="firm-description">Advanced healthcare solutions provider specializing in innovative medical treatments and patient care technologies.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-item">
+                        <i class="fas fa-globe footer-icon"></i>
+                        <div class="footer-value">Boston</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-users footer-icon"></i>
+                        <div class="footer-value">2,100</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-chart-line footer-icon"></i>
+                        <div class="footer-value">$1.8B</div>
+                    </div>
+                </div>
+                <div class="link-icon" role="button" aria-label="View MediCare Innovations profile">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+            </div>
+
+            <div class="firm-card red" data-category="Manufacturing">
+                <div class="card-header">
+                    <div class="firm-category">Manufacturing</div>
+                    <div class="card-icon" aria-label="Manufacturing icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="firm-name">Precision Manufacturing</h3>
+                    <p class="firm-description">Industry leader in precision engineering and advanced manufacturing technologies for automotive and aerospace sectors.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-item">
+                        <i class="fas fa-globe footer-icon"></i>
+                        <div class="footer-value">Detroit</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-users footer-icon"></i>
+                        <div class="footer-value">3,500</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-chart-line footer-icon"></i>
+                        <div class="footer-value">$3.2B</div>
+                    </div>
+                </div>
+                <div class="link-icon" role="button" aria-label="View Precision Manufacturing profile">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+            </div>
+
+            <div class="firm-card purple" data-category="Retail">
+                <div class="card-header">
+                    <div class="firm-category">Retail</div>
+                    <div class="card-icon" aria-label="Retail icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="firm-name">Elite Retail Group</h3>
+                    <p class="firm-description">Premium retail conglomerate offering curated luxury experiences across multiple brands and global markets.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-item">
+                        <i class="fas fa-globe footer-icon"></i>
+                        <div class="footer-value">Chicago</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-users footer-icon"></i>
+                        <div class="footer-value">5,200</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-chart-line footer-icon"></i>
+                        <div class="footer-value">$4.5B</div>
+                    </div>
+                </div>
+                <div class="link-icon" role="button" aria-label="View Elite Retail Group profile">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+            </div>
+
+            <div class="firm-card teal" data-category="Sustainability">
+                <div class="card-header">
+                    <div class="firm-category">Sustainability</div>
+                    <div class="card-icon" aria-label="Sustainability icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="firm-name">Green Energy Solutions</h3>
+                    <p class="firm-description">Sustainable energy provider developing cutting-edge renewable solutions for a greener future.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-item">
+                        <i class="fas fa-globe footer-icon"></i>
+                        <div class="footer-value">Austin</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-users footer-icon"></i>
+                        <div class="footer-value">750</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-chart-line footer-icon"></i>
+                        <div class="footer-value">$680M</div>
+                    </div>
+                </div>
+                <div class="link-icon" role="button" aria-label="View Green Energy Solutions profile">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+            </div>
+            
+            <div class="firm-card yellow" data-category="Technology & Innovation">
+                <div class="card-header">
+                    <div class="firm-category">Technology & Innovation</div>
+                    <div class="card-icon" aria-label="FinTech icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="firm-name">Capital Innovations</h3>
+                    <p class="firm-description">A disruptive FinTech firm focused on AI-driven wealth management and blockchain-based security solutions.</p>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-item">
+                        <i class="fas fa-globe footer-icon"></i>
+                        <div class="footer-value">London</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-users footer-icon"></i>
+                        <div class="footer-value">1,100</div>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-chart-line footer-icon"></i>
+                        <div class="footer-value">$950M</div>
+                    </div>
+                </div>
+                <div class="link-icon" role="button" aria-label="View Capital Innovations profile">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // --- Search and Filter Logic Refinement ---
+        const searchBox = document.querySelector('.search-box');
+        const cards = document.querySelectorAll('.firm-card');
+        const chips = document.querySelectorAll('.chip');
+        const linkIcons = document.querySelectorAll('.link-icon');
+        
+        let activeCategory = ''; // Keep track of the currently active category filter
+        
+        // Function to filter cards based on search term and active chip
+        const filterCards = () => {
+            const searchTerm = searchBox.value.toLowerCase();
+            
+            cards.forEach(card => {
+                const content = card.textContent.toLowerCase();
+                const cardCategory = card.dataset.category; // Get category from data attribute
+                
+                const matchesSearch = content.includes(searchTerm);
+                const matchesCategory = activeCategory === '' || cardCategory === activeCategory;
+                
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        };
+
+        // Search functionality event listener
+        searchBox.addEventListener('input', filterCards);
+
+        // Filter functionality event listeners
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    c.classList.remove('active');
+                    c.setAttribute('aria-selected', 'false');
+                });
+                
+                chip.classList.add('active');
+                chip.setAttribute('aria-selected', 'true');
+                
+                activeCategory = chip.dataset.category; // Get category from data attribute
+                
+                // Clear search box on new filter application for cleaner UX
+                searchBox.value = '';
+                
+                filterCards(); // Apply the new filter
+            });
+        });
+
+        // View profile functionality (Placeholder)
+        linkIcons.forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const card = icon.closest('.firm-card');
+                const firmName = card.querySelector('.firm-name').textContent;
+                console.log(`Navigating to profile for ${firmName}...`);
+                // Placeholder: replace with actual navigation logic
+                // window.location.href = `/profile/${firmName.toLowerCase().replace(/ /g, '-')}`; 
+            });
+        });
+    </script>
+</body>
+</html>
