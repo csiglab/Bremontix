@@ -76,32 +76,6 @@
       "employees": "1,100",
       "revenue": "$950M",
       "link": "#"
-    },
-
-    {
-      "id": 7,
-      "name": "Laboratorium Arbitristae",
-      "category": "Laboratory",
-      "icon": "fa-flask",
-      "description": "Espacio para prototipar ideas, investigando y diseñando estrategias para la grandeza tecnológica y productiva de la República Dominicana. Escudo de Armas - Laboratorio Arbitrista",
-      "location": "Santiago",
-      "employees": "1,100",
-      "revenue": "$950M",
-      "link": "https://www.bremontix.xyz/lab/ar"
-    },
-
-        {
-      "id": 7,
-      "parent": 6,
-      "name": "Laboratorium Productivum et Mercatorum",
-      "category": "Laboratory",
-      "icon": "fa-flask",
-      "description": "Characterize productive systems, design convergence plans with the most sophisticated productive systems, and experiment with new forms of production and business at the frontier.",
-      "location": "Santiago",
-      "employees": "1,100",
-      "revenue": "$950M",
-      "link": "https://www.bremontix.xyz/lab/pro/"
     }
-
   ]
 }
