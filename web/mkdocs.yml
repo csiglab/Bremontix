@@ -15,7 +15,7 @@ theme:
       scheme: slate
       primary: indigo
       accent: indigo
-  custom_dir: overrides
+  custom_dir: ../docs/overrides
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
